@@ -57,8 +57,8 @@ echo $res;
 
 /*Написать функцию которая вычисляет входит ли IP-адрес в диапазон указанных IP-адресов. Вычислить для версии ipv4*/
 echo '<br/>' . '==========#4==========' . '<br/>';
-$ipArr = ['192.0.2.235', '192.10.3.5'];
-$ipCheck = '192.0.3.1';
+$ipArr = ['1.127.255.100', '128.0.0.0'];
+$ipCheck = '2.1.0.0';
 
 function checkIp($ip, $ipArr) {
     $ipArr = $ipArr;
@@ -80,3 +80,112 @@ echo checkIp($ipCheck, $ipArr);
 /*Для одномерного массива
 Подсчитать процентное соотношение положительных/отрицательных/нулевых/простых чисел
 Отсортировать элементы по возрастанию/убыванию*/
+echo '<br/>' . '==========#5==========' . '<br/>';
+
+$baseArr = [0, 2, 15, 22, 7, 1, 35, 16, 3, -3, -2, 17];
+
+function percentagePositiveNumbers($numbersArr) {
+    $arr = $numbersArr;
+    foreach ($arr as $arrItem) {
+        if ($arrItem > 0) {
+            $positiveNumbersArr[] = $arrItem;
+        }
+    }
+    $percentagePositiveNumbers = round((count($positiveNumbersArr) / count($arr) * 100));
+    return $percentagePositiveNumbers;
+}
+echo 'Positive (%): ' . percentagePositiveNumbers($baseArr) . '<br/>';
+
+function percentageNegativeNumbers($numbersArr) {
+    $arr = $numbersArr;
+    foreach ($arr as $arrItem) {
+        if ($arrItem < 0) {
+            $negativeNumbersArr[] = $arrItem;
+        }
+    }
+    $percentageNegativeNumbers = round((count($negativeNumbersArr) / count($arr) * 100));
+    return $percentageNegativeNumbers;
+}
+echo 'Negative (%): ' . percentageNegativeNumbers($baseArr) . '<br/>';
+
+function percentageZero($numbersArr) {
+    $arr = $numbersArr;
+    foreach ($arr as $arrItem) {
+        if ($arrItem == 0) {
+            $zeroArr[] = $arrItem;
+        }
+    }
+    $percentageZero = round((count($zeroArr) / count($arr) * 100));
+    return $percentageZero;
+}
+echo 'Zero (%): ' . percentageZero($baseArr) . '<br/>';
+
+function isPrimeNumber($number) {
+    $isPrime = true;
+    if ($number > 1) {
+        for ($i = 2; $i < $number; $i++) {
+            if ($number % $i == 0) {
+                $isPrime = false;
+                return $isPrime;
+            }
+        }
+    } else {
+        $isPrime = false;
+    }
+    return $isPrime;
+}
+
+function percentagePrimeNumbers($numbersArr) {
+    $arr = $numbersArr;
+    foreach ($arr as $arrItem) {
+        if (isPrimeNumber($arrItem)) {
+            $primeNumbersArr[] = $arrItem;
+        }
+    }
+    $percentagePrimeNumbers = round((count($primeNumbersArr) / count($arr) * 100));
+    return $percentagePrimeNumbers;
+}
+echo 'Prime (%): ' . percentagePrimeNumbers($baseArr) . '<br/>';
+
+function arrSortAsc($numbersArr) {
+    $arrSize = count($numbersArr);
+    for($i = 0; $i < $arrSize; $i ++) {
+        for($j = 0; $j < $arrSize; $j ++) {
+            if ($numbersArr[$i] < $numbersArr[$j]) {
+                $item = $numbersArr[$i];
+                $numbersArr[$i] = $numbersArr[$j];
+                $numbersArr[$j] = $item;
+            }
+        }
+
+    }
+    return $numbersArr;
+}
+
+echo 'Sort array asc: ' . implode(',', arrSortAsc($baseArr)) . '<br/>';
+
+function arrSortDesc($numbersArr) {
+    $arrSize = count($numbersArr);
+    for($i = 0; $i < $arrSize; $i ++) {
+        for($j = 0; $j < $arrSize; $j ++) {
+            if ($numbersArr[$i] > $numbersArr[$j]) {
+                $item = $numbersArr[$i];
+                $numbersArr[$i] = $numbersArr[$j];
+                $numbersArr[$j] = $item;
+            }
+        }
+
+    }
+    return $numbersArr;
+}
+
+echo 'Sort array desc: ' . implode(',', arrSortDesc($baseArr)) . '<br/>';
+
+/*
+ * Для двумерных массивов
+Транспонировать матрицу
+Умножить две матрицы
+Удалить те строки, в которых сумма элементов положительна и присутствует хотя бы один нулевой элемент. Аналогично для столбцов.
+
+ * */
+echo '<br/>' . '==========#6==========' . '<br/>';

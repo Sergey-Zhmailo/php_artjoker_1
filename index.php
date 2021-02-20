@@ -58,7 +58,12 @@
 
 // Lesson 3
 
+//Обработка ошибок
+//if ($b == 0) {
+//    throw new Exception('error');
+//}
 
+//MVC
 
 
 
