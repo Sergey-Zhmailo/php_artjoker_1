@@ -267,7 +267,6 @@ function deleteMatrixCol($arr) {
                 $isZero = true;
             }
         }
-        echo $colSum . ' - ' . $isZero . ' / ';
         if (!($colSum > 0 && $isZero)) {
             for ($k = 0; $k < count($arr[$i]); $k++) {
                 $res[$k][] = $arr[$k][$i];
@@ -288,4 +287,25 @@ echo '</pre>';
 /*Рекурсии
 Все задачи на циклы которые можно реализовать с помощью рекурсии, переписать с помощью рекурсивных функций
 Написать рекурсивную функцию которая будет обходить и выводить все значения любого массива и любого уровня вложенности*/
-echo '<br/>' . '==========#6==========' . '<br/>';
+echo '<br/>' . '==========#7==========' . '<br/>';
+
+function showArrayValues($arr) {
+    for ($i = 0; $i < count($arr); $i++) {
+        if (is_array($arr[$i])) {
+            showArrayValues($arr[$i]);
+        } else {
+            echo $arr[$i] . '<br/>';
+        }
+    }
+}
+
+$baseArray = [
+    1,
+    '2',
+    ['q', 4, 5],
+    [
+        6,
+        ['t', 7]
+    ]
+];
+showArrayValues($baseArray);
